@@ -3,39 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FiorDev — Desenvolvimento Web Profissional</title>
+  <title>FiorDev — Soluções Web Corporativas</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="description" content="FiorDev — desenvolvimento web profissional. Sites corporativos, seguros, responsivos e focados em resultados." />
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <meta name="description" content="FiorDev — desenvolvimento web profissional. Sites responsivos, rápidos e focados em resultados.">
   <style>
     /* =========================
-       Variables & Base
+       Palette & base
        ========================= */
     :root{
       --blue: #2563eb;
-      --blue-600: #1d4ed8;
+      --blue-700: #1d4ed8;
       --bg: #ffffff;
-      --text: #0b1220;
-      --muted: #6b7280;
       --card: #ffffff;
-      --glass: rgba(16,24,40,0.03);
-      --radius: 12px;
-      --shadow-sm: 0 6px 20px rgba(2,6,23,0.06);
-      --max-width: 1200px;
+      --text: #0b1220;
+      --muted: #556070;
+      --glass: rgba(16,24,40,0.04);
+      --radius: 14px;
+      --shadow-sm: 0 8px 30px rgba(13,20,30,0.06);
+      --max-w: 1200px;
     }
 
-    /* Dark mode */
-    @media (prefers-color-scheme: dark){
+    /* dark scheme */
+    @media (prefers-color-scheme: dark) {
       :root{
         --bg: #06070a;
-        --text: #e6eef8;
-        --muted: #9aa6bf;
         --card: #0b1220;
+        --text: #e8f0ff;
+        --muted: #94a3c2;
         --glass: rgba(255,255,255,0.03);
-        --shadow-sm: 0 8px 30px rgba(2,6,23,0.6);
+        --shadow-sm: 0 10px 36px rgba(2,6,23,0.6);
       }
     }
 
@@ -44,23 +45,21 @@
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
+      background: linear-gradient(180deg,var(--bg),var(--bg));
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      -webkit-tap-highlight-color: transparent;
+      line-height:1.55;
     }
 
-    /* =========================
-       Layout
-       ========================= */
-    .wrap{
-      max-width:var(--max-width);
+    /* Container */
+    .container{
+      max-width:var(--max-w);
       margin:36px auto;
-      padding:24px;
+      padding:28px;
     }
 
+    /* Header */
     header{
       display:flex;
       align-items:center;
@@ -68,233 +67,198 @@
       margin-bottom:28px;
     }
 
-    .logo{
+    .brand {
       display:flex;
       gap:14px;
       align-items:center;
     }
-
-    .logo img{
-      width:64px;height:64px;object-fit:contain;border-radius:10px;
-      box-shadow:var(--shadow-sm);
-      background:transparent;
+    .brand img{
+      width:72px;height:72px;border-radius:12px;object-fit:contain;background:transparent;box-shadow:var(--shadow-sm);
     }
-
     .brand h1{
-      margin:0;
-      font-family:Poppins, Inter, sans-serif;
-      font-weight:700;
-      font-size:1.12rem;
-      letter-spacing:0.2px;
+      margin:0;font-family:Merriweather, serif;font-weight:700;font-size:1.1rem;letter-spacing:0.2px;
     }
+    .brand p{margin:0;color:var(--muted);font-size:0.95rem}
 
-    .brand p{margin:0;color:var(--muted);font-size:0.92rem}
-
-    nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-
-    .btn{
+    nav{margin-left:auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn {
       background:var(--blue);
-      color:white;
-      border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;
-      transition:transform .14s ease, box-shadow .14s ease, background .14s ease;
-      box-shadow: 0 6px 18px rgba(37,99,235,0.12);
+      color:white;border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.12);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s;
     }
-    .btn:hover{transform:translateY(-3px);background:var(--blue-600)}
-    .btn.ghost{
-      background:transparent;color:var(--text);border:1px solid rgba(13,17,23,0.06);
-      box-shadow:none;
-    }
+    .btn:hover{transform:translateY(-3px);background:var(--blue-700)}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06);box-shadow:none}
 
+    /* Main layout */
     main{
       display:grid;
-      grid-template-columns:1fr 420px;
+      grid-template-columns: 1fr 420px;
       gap:28px;
       align-items:start;
     }
+    @media (max-width:1100px){ main{grid-template-columns:1fr 360px} }
+    @media (max-width:980px){ main{grid-template-columns:1fr} }
 
-    @media (max-width:1100px){
-      .wrap{padding:20px}
-      main{grid-template-columns:1fr 360px}
-    }
-    @media (max-width:980px){
-      main{grid-template-columns:1fr}
-    }
-
-    /* =========================
-       Hero (left)
-       ========================= */
-    .hero{
-      background: linear-gradient(180deg, rgba(37,99,235,0.02), transparent);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .kicker{
-      display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,0.08);color:var(--blue);font-weight:700;font-size:0.85rem;
-      margin-bottom:14px;
-    }
-
-    h2{font-size:1.85rem;margin:10px 0 12px;font-family:Poppins, Inter, sans-serif;color:var(--text)}
-    .lead{color:var(--muted);margin:0 0 18px;font-size:1rem}
-
-    .grid-feats{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .feat{
+    /* Left (hero / content) */
+    .panel-hero{
       background:var(--card);
-      border-radius:10px;padding:12px;border:1px solid rgba(0,0,0,0.03);
-      min-width:160px;box-shadow: 0 6px 16px rgba(2,6,23,0.03);
+      border-radius:var(--radius);
+      padding:34px;
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(0,0,0,0.04);
     }
-    .feat b{display:block}
+    .kicker{display:inline-block;background:rgba(37,99,235,0.08);color:var(--blue);padding:6px 12px;border-radius:999px;font-weight:700;margin-bottom:14px}
+    .hero-title{font-size:2rem;margin:8px 0 12px;font-weight:700;font-family:Merriweather, serif}
+    .hero-desc{color:var(--muted);margin:0 0 18px;font-size:1rem}
 
-    .proofs{margin-top:20px;display:flex;gap:12px;flex-direction:column}
-    .testi{
-      padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
-      color:var(--text);
-      border:1px solid rgba(0,0,0,0.03);
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .feature{
+      background:var(--glass);
+      border-radius:10px;padding:14px;border:1px solid rgba(0,0,0,0.04);min-width:170px;
+    }
+    .feature b{display:block}
+
+    .casegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    @media (max-width:720px){ .casegrid{grid-template-columns:1fr} }
+
+    .case{
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+      border-radius:10px;padding:14px;border:1px solid rgba(0,0,0,0.03);
     }
 
-    /* =========================
-       Aside / Form (right)
-       ========================= */
-    .aside{
+    /* Right (form) */
+    .panel-aside{
       background:var(--card);
       border-radius:var(--radius);
       padding:22px;
       box-shadow:var(--shadow-sm);
       border:1px solid rgba(0,0,0,0.04);
     }
+    .panel-aside h3{margin:0 0 8px;font-weight:700}
+    .panel-aside p.small{margin:0 0 12px;color:var(--muted)}
 
-    .aside h3{margin:0 0 6px;font-size:1.05rem;font-family:Poppins}
-    .aside p.small{color:var(--muted);margin:0 0 12px}
-
-    form{display:flex;flex-direction:column;gap:10px}
+    form{display:flex;flex-direction:column;gap:12px}
     input,textarea,select{
       width:100%;
-      padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);
-      font-size:1rem;background:transparent;color:var(--text);
+      padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);font-size:1rem;background:transparent;color:var(--text)
     }
-    textarea{min-height:110px;resize:vertical}
+    textarea{min-height:120px;resize:vertical}
     .row{display:flex;gap:10px}
     .row > *{flex:1}
 
-    .meta{display:flex;gap:10px;align-items:center;margin-top:8px}
-    .meta .note{font-size:0.92rem;color:var(--muted)}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+    .meta .note{color:var(--muted);font-size:0.92rem}
 
-    /* =========================
-       Admin panel (hidden by default)
-       ========================= */
-    .admin-panel{
-      margin-top:18px;padding:16px;border-radius:12px;
-      background: linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.01));
-      border:1px solid rgba(0,0,0,0.04);
+    /* Admin */
+    .admin {
+      margin-top:18px;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background:linear-gradient(180deg, rgba(0,0,0,0.01), transparent)
     }
-    .admin-login{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .admin-login{display:flex;gap:8px;align-items:center}
     .admin-login input{padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
 
-    .list-item{
-      padding:12px;border-radius:10px;background:var(--card);border:1px solid rgba(0,0,0,0.04);
-      display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;align-items:flex-start;
+    .msglist{margin-top:12px}
+    .msg-item{
+      display:flex;justify-content:space-between;gap:12px;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background:var(--card);margin-bottom:10px;
     }
-    .list-item .left{max-width:78%}
+    .msg-item .left{max-width:78%}
     .small{font-size:0.92rem;color:var(--muted)}
 
-    /* =========================
-       Footer
-       ========================= */
+    /* Footer (premium) */
     footer{
-      margin-top:34px;color:var(--muted);
-      text-align:center;padding:28px 6px;border-top:1px solid rgba(0,0,0,0.04);
+      margin-top:36px;padding:28px 18px;border-top:1px solid rgba(0,0,0,0.04);
     }
-    .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:var(--max-width);margin:0 auto;padding:0 24px}
-    @media (max-width:720px){
-      .footer-grid{flex-direction:column;gap:12px;text-align:center}
+    .footer-grid{
+      max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 12px;
     }
+    .footer-left{display:flex;align-items:center;gap:12px}
+    .footer-left .brand-min{font-weight:700}
+    .footer-links{display:flex;gap:12px;align-items:center}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:0.95rem;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.03)}
+    .footer-right{text-align:right;color:var(--muted)}
+    @media (max-width:820px){ .footer-grid{flex-direction:column;align-items:center;text-align:center} .footer-right{text-align:center} }
 
-    .socials{display:flex;gap:10px;align-items:center}
-    .socials a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.03);font-size:0.92rem}
-    .addr{color:var(--muted);font-size:0.92rem}
-
-    /* =========================
-       Accessibility & small screens
-       ========================= */
+    /* Tiny screens */
     @media (max-width:520px){
-      .logo img{width:52px;height:52px}
-      .brand h1{font-size:1rem}
-      h2{font-size:1.3rem}
-      .feat{min-width:140px}
-      .aside{padding:16px}
+      .brand img{width:56px;height:56px}
+      .hero-title{font-size:1.35rem}
+      .panel-hero{padding:20px}
+      .panel-aside{padding:16px}
     }
   </style>
 </head>
 <body>
-  <div class="wrap" role="document" aria-label="FiorDev Website">
-
-    <header role="banner">
-      <div class="logo" aria-hidden="false">
-        <!-- Troque 'logo.png' pelo seu arquivo de logo transparente -->
+  <div class="container" role="document" aria-label="FiorDev website">
+    <header role="banner" aria-label="cabeçalho">
+      <div class="brand">
         <img src="logo.png" alt="Logo FiorDev" onerror="this.style.display='none'">
-        <div class="brand">
+        <div>
           <h1>FiorDev</h1>
-          <p>Desenvolvimento Web Profissional</p>
+          <p>Desenvolvimento Web Corporativo</p>
         </div>
       </div>
 
-      <nav role="navigation" aria-label="menu principal">
-        <button class="btn" id="cta-top">Quero conversar</button>
-        <button class="btn ghost" id="open-admin">Área administrativa</button>
+      <nav role="navigation" aria-label="navegação principal">
+        <button class="btn" id="btn-contact">Solicitar proposta</button>
+        <button class="btn ghost" id="btn-admin">Área administrativa</button>
       </nav>
     </header>
 
     <main role="main">
-      <!-- HERO -->
-      <section class="hero" aria-labelledby="hero-title">
-        <span class="kicker" aria-hidden="true">Agência & Freelancer</span>
-        <h2 id="hero-title">Soluções web corporativas: performance, segurança e conversão</h2>
-        <p class="lead">Desenvolvemos sites institucionais e plataformas digitais com foco em disponibilidade, segurança e experiência do usuário. Projetos entregues com processos claros, prazos definidos e documentação técnica.</p>
+      <!-- HERO / Content -->
+      <section class="panel-hero" aria-labelledby="hero-title">
+        <div class="kicker" aria-hidden="true">Soluções Corporativas</div>
+        <h2 id="hero-title" class="hero-title">Plataformas web seguras, escaláveis e orientadas a resultados</h2>
+        <p class="hero-desc">Na FiorDev entregamos soluções digitais com foco em disponibilidade, conformidade e desempenho. Atendemos empresas que demandam processos auditáveis, documentação técnica e compromisso com prazos.</p>
 
-        <div class="grid-feats" aria-hidden="true">
-          <div class="feat"><b>Performance</b><div class="small">Otimização para velocidade e SEO técnico</div></div>
-          <div class="feat"><b>Segurança</b><div class="small">Boas práticas, HTTPS e atualizações</div></div>
-          <div class="feat"><b>Responsividade</b><div class="small">Layout adaptado para qualquer dispositivo</div></div>
+        <div class="features" aria-hidden="true">
+          <div class="feature"><b>Arquitetura robusta</b><div class="small">Estrutura projetada para crescimento e manutenção</div></div>
+          <div class="feature"><b>Conformidade & segurança</b><div class="small">Padrões de segurança, backups e HTTPS</div></div>
+          <div class="feature"><b>Otimização</b><div class="small">Performance e SEO técnico para visibilidade orgânica</div></div>
         </div>
 
-        <div class="proofs" aria-hidden="true">
-          <div class="testi"><strong>“Equipe técnica experiente e entrega confiável.”</strong><div class="small">— Cliente</div></div>
-          <div class="testi"><strong>“Solidez no código e transparência no processo.”</strong><div class="small">— Cliente</div></div>
+        <div class="casegrid" aria-hidden="true">
+          <div class="case">
+            <strong>Entrega profissional</strong>
+            <div class="small">Processo documentado, entregas por sprint e validação.</div>
+          </div>
+          <div class="case">
+            <strong>Suporte técnico</strong>
+            <div class="small">Acordos de nível (SLA) e manutenção programada.</div>
+          </div>
         </div>
       </section>
 
       <!-- ASIDE / FORM -->
-      <aside class="aside" aria-labelledby="form-title">
-        <h3 id="form-title">Solicitar proposta</h3>
-        <p class="small">Descreva seu projeto e receberá um retorno com escopo e orçamento estimado.</p>
+      <aside class="panel-aside" aria-labelledby="form-title">
+        <h3 id="form-title">Solicite uma proposta</h3>
+        <p class="small">Descreva as necessidades do projeto; retornaremos com escopo preliminar e estimativa.</p>
 
-        <form id="contact-form" autocomplete="off" novalidate>
-          <input id="name" name="name" placeholder="Nome completo" required aria-label="nome completo" />
-          <input id="email" name="email" type="email" placeholder="E-mail corporativo" required aria-label="e-mail" />
-          <input id="phone" name="phone" placeholder="Telefone (opcional)" aria-label="telefone" />
-          <textarea id="message" name="message" placeholder="Breve descrição do projeto (objetivos, prazo, orçamento aproximado)" aria-label="mensagem"></textarea>
+        <form id="form" autocomplete="off" novalidate>
+          <input id="name" name="name" placeholder="Nome completo / Empresa" required aria-label="nome ou empresa">
+          <input id="email" name="email" type="email" placeholder="E-mail corporativo" required aria-label="e-mail">
+          <input id="phone" name="phone" placeholder="Telefone (opcional)" aria-label="telefone">
+          <textarea id="message" name="message" placeholder="Resumo do projeto, objetivos e prazo previsto" aria-label="mensagem"></textarea>
 
           <div class="row">
-            <button class="btn" type="submit" aria-label="enviar proposta">Enviar</button>
-            <button class="btn ghost" type="button" id="clear" aria-label="limpar formulário">Limpar</button>
+            <button class="btn" type="submit">Enviar proposta</button>
+            <button class="btn ghost" type="button" id="clear">Limpar</button>
           </div>
 
           <div class="meta">
-            <div class="note small" id="status">Informações protegidas — visíveis apenas na área administrativa.</div>
+            <div class="note small" id="status">Dados confidenciais — visíveis apenas na área administrativa.</div>
           </div>
         </form>
 
-        <!-- Admin panel -->
-        <div class="admin-panel" id="admin-panel" style="display:none" aria-hidden="true">
+        <!-- Admin panel (hidden until opened) -->
+        <div class="admin" id="admin" style="display:none" aria-hidden="true">
           <div id="admin-section">
             <div id="admin-content" style="display:none">
               <h4>Mensagens recebidas</h4>
-              <div id="list" aria-live="polite"></div>
+              <div class="msglist" id="msglist" aria-live="polite"></div>
 
               <div style="margin-top:12px" class="small">
-                <strong>Contato FiorDev (visível apenas aqui)</strong><br>
+                <strong>Contato FiorDev (apenas aqui)</strong><br>
                 E-mail: <span id="owner-email"></span><br>
                 Telefone: <span id="owner-phone"></span>
               </div>
@@ -305,33 +269,31 @@
                 <input id="admin-pass" type="password" placeholder="Senha administrativa" aria-label="senha administrativa">
                 <button class="btn" id="admin-unlock">Entrar</button>
               </div>
-              <div class="small msg">Em produção, substitua este mecanismo por autenticação segura (backend).</div>
+              <div class="small">Recomendado: autenticação segura em produção (backend).</div>
             </div>
           </div>
         </div>
-
       </aside>
     </main>
 
-    <!-- Footer profissional -->
+    <!-- Footer -->
     <footer role="contentinfo">
-      <div class="footer-grid" aria-hidden="false">
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="logo.png" alt="FiorDev" style="width:48px;height:48px;border-radius:8px;object-fit:contain;display:block" onerror="this.style.display='none'">
+      <div class="footer-grid" role="group" aria-label="rodapé institucional">
+        <div class="footer-left">
+          <img src="logo.png" alt="FiorDev" style="width:56px;height:56px;border-radius:10px;object-fit:contain;display:block" onerror="this.style.display='none'">
           <div>
-            <div style="font-weight:600">FiorDev</div>
-            <div class="addr small">Soluções web corporativas • Brasil</div>
+            <div class="brand-min">FiorDev</div>
+            <div class="small addr">Soluções Web Corporativas • Brasil</div>
           </div>
         </div>
 
-        <div class="socials" aria-hidden="true">
-          <!-- Substitua os hrefs pelas suas redes reais -->
-          <a href="#" title="LinkedIn" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" title="Instagram" aria-label="Instagram">Instagram</a>
-          <a href="#" title="E-mail" aria-label="E-mail">Contato</a>
+        <div class="footer-links" role="navigation" aria-label="links do rodapé">
+          <a href="#" aria-label="serviços">Serviços</a>
+          <a href="#" aria-label="sobre">Sobre</a>
+          <a href="#" aria-label="contato">Contato</a>
         </div>
 
-        <div style="text-align:right">
+        <div class="footer-right">
           <div class="small">© <span id="year"></span> FiorDev</div>
           <div class="small">Todos os direitos reservados</div>
         </div>
@@ -341,149 +303,136 @@
 
   <script>
     /* =========================
-       Configuration
+       Configurações e utilitários
        ========================= */
     const ADMIN_PASSWORD = 'fiordev2025';
     const OWNER = { email: 'fiordelicegabriella@gmail', phone: '(18) 99102-9097' };
+    const STORAGE_KEY = 'fiordev_messages_v3';
 
-    /* DOM references */
-    const form = document.getElementById('contact-form');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+    document.getElementById('owner-email').textContent = OWNER.email;
+    document.getElementById('owner-phone').textContent = OWNER.phone;
+
+    function readMessages(){ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    function writeMessages(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+    function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+    /* =========================
+       Form logic
+       ========================= */
+    const form = document.getElementById('form');
     const status = document.getElementById('status');
     const clearBtn = document.getElementById('clear');
-    const adminPanel = document.getElementById('admin-panel');
-    const openAdmin = document.getElementById('open-admin');
-    const ctaTop = document.getElementById('cta-top');
-
-    const adminUnlock = document.getElementById('admin-unlock');
-    const adminPass = document.getElementById('admin-pass');
-    const adminContent = document.getElementById('admin-content');
-    const adminLogin = document.getElementById('admin-login');
-    const listEl = document.getElementById('list');
-    const ownerEmail = document.getElementById('owner-email');
-    const ownerPhone = document.getElementById('owner-phone');
-    const yearEl = document.getElementById('year');
-
-    yearEl.textContent = new Date().getFullYear();
-    ownerEmail.textContent = OWNER.email;
-    ownerPhone.textContent = OWNER.phone;
-
-    /* Utilities */
-    const storageKey = 'fiordev_contacts_v2';
-    function readList(){ return JSON.parse(localStorage.getItem(storageKey) || '[]'); }
-    function writeList(list){ localStorage.setItem(storageKey, JSON.stringify(list)); }
-    function escapeHtml(text){
-      if(!text) return '';
-      return String(text).replace(/[&<>"']/g, (m)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-    }
-
-    /* Form handling */
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const message = document.getElementById('message').value.trim();
 
       if(!name || !email){
-        status.textContent = 'Por favor, preencha nome e e-mail.';
+        status.textContent = 'Preencha nome e e-mail para prosseguir.';
         return;
       }
 
       const item = { id: Date.now(), name, email, phone, message, createdAt: new Date().toISOString() };
-      const list = readList();
+      const list = readMessages();
       list.unshift(item);
-      writeList(list);
+      writeMessages(list);
 
-      status.textContent = 'Mensagem recebida. Obrigado — retornaremos em breve.';
+      status.textContent = 'Mensagem recebida. Retornaremos em breve.';
       form.reset();
-      setTimeout(()=> status.textContent = 'Informações protegidas — visíveis apenas na área administrativa.', 4000);
+      setTimeout(()=> status.textContent = 'Dados confidenciais — visíveis apenas na área administrativa.', 4000);
     });
 
     clearBtn.addEventListener('click', () => {
       form.reset();
       status.textContent = 'Formulário limpo.';
-      setTimeout(()=> status.textContent = 'Informações protegidas — visíveis apenas na área administrativa.', 3000);
+      setTimeout(()=> status.textContent = 'Dados confidenciais — visíveis apenas na área administrativa.', 2000);
     });
 
-    /* Admin panel open/close */
-    openAdmin.addEventListener('click', () => {
-      const visible = adminPanel.style.display === 'block';
-      adminPanel.style.display = visible ? 'none' : 'block';
-      adminPanel.setAttribute('aria-hidden', visible ? 'true' : 'false');
-      if(!visible) adminPass.focus();
+    /* =========================
+       Admin UI (no prompt) — opens an admin box with password field
+       ========================= */
+    const btnAdmin = document.getElementById('btn-admin');
+    const adminBlock = document.getElementById('admin');
+    const adminUnlock = document.getElementById('admin-unlock');
+    const adminPass = document.getElementById('admin-pass');
+    const adminContent = document.getElementById('admin-content');
+    const adminLogin = document.getElementById('admin-login');
+    const msglist = document.getElementById('msglist');
+
+    btnAdmin.addEventListener('click', () => {
+      const isVisible = adminBlock.style.display === 'block';
+      adminBlock.style.display = isVisible ? 'none' : 'block';
+      adminBlock.setAttribute('aria-hidden', isVisible ? 'true' : 'false');
+      if(!isVisible) adminPass.focus();
     });
 
-    ctaTop.addEventListener('click', () => {
-      document.querySelector('.aside').scrollIntoView({behavior:'smooth', block:'center'});
-      document.getElementById('name').focus();
-    });
-
-    /* Admin login */
     adminUnlock.addEventListener('click', () => {
       const val = adminPass.value || '';
       if(val === ADMIN_PASSWORD){
         adminLogin.style.display = 'none';
         adminContent.style.display = 'block';
-        renderList();
         sessionStorage.setItem('fiordev_admin_unlocked','1');
+        renderMessages();
       } else {
-        // feedback discreto e profissional
         adminPass.value = '';
         adminPass.focus();
         adminPass.style.border = '1px solid #ef4444';
-        setTimeout(()=> adminPass.style.border = '', 1300);
+        setTimeout(()=> adminPass.style.border = '', 1200);
       }
     });
 
-    function renderList(){
-      const list = readList();
+    function renderMessages(){
+      const list = readMessages();
       if(!list.length){
-        listEl.innerHTML = '<div class="small">Nenhuma mensagem recebida.</div>';
-        return;
+        msglist.innerHTML = '<div class="small">Nenhuma mensagem recebida.</div>'; return;
       }
-      listEl.innerHTML = list.map(item => {
-        return `
-          <div class="list-item" role="article">
-            <div class="left">
-              <div style="font-weight:600">${escapeHtml(item.name)}</div>
-              <div class="small">${escapeHtml(item.email)} ${item.phone ? '• ' + escapeHtml(item.phone) : ''}</div>
-              <div style="margin-top:8px;color:var(--muted)">${escapeHtml(item.message)}</div>
-              <div class="small" style="margin-top:8px;color:var(--muted)">${new Date(item.createdAt).toLocaleString()}</div>
-            </div>
-            <div>
-              <button onclick="removeItem(${item.id})" style="background:#ef4444;border:none;color:white;padding:8px 10px;border-radius:10px;cursor:pointer">Remover</button>
-            </div>
+      msglist.innerHTML = list.map(it => {
+        return `<div class="msg-item" role="article">
+          <div class="left">
+            <div style="font-weight:600">${escapeHtml(it.name)}</div>
+            <div class="small">${escapeHtml(it.email)} ${it.phone ? '• ' + escapeHtml(it.phone) : ''}</div>
+            <div style="margin-top:8px;color:var(--muted)">${escapeHtml(it.message)}</div>
+            <div class="small" style="margin-top:8px;color:var(--muted)">${new Date(it.createdAt).toLocaleString()}</div>
           </div>
-        `;
+          <div>
+            <button onclick="removeMessage(${it.id})" style="background:#ef4444;border:none;color:white;padding:8px 10px;border-radius:10px;cursor:pointer">Remover</button>
+          </div>
+        </div>`;
       }).join('');
     }
 
-    // Exposed for inline onclick
-    window.removeItem = function(id){
-      let list = readList();
+    window.removeMessage = function(id){
+      let list = readMessages();
       list = list.filter(x => x.id !== id);
-      writeList(list);
-      renderList();
+      writeMessages(list);
+      renderMessages();
     };
 
-    // If admin was unlocked earlier in this session, restore view
+    // restore admin if unlocked this session
     if(sessionStorage.getItem('fiordev_admin_unlocked') === '1'){
-      adminPanel.style.display = 'block';
+      adminBlock.style.display = 'block';
+      adminBlock.setAttribute('aria-hidden','false');
       adminLogin.style.display = 'none';
       adminContent.style.display = 'block';
-      renderList();
+      renderMessages();
     }
 
-    /* Small accessibility niceties: keyboard submit for adminPass */
-    adminPass.addEventListener && adminPass.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter') adminUnlock.click();
+    // quick jump to form
+    document.getElementById('btn-contact').addEventListener('click', () => {
+      document.getElementById('name').focus();
+      document.querySelector('.panel-aside').scrollIntoView({behavior:'smooth', block:'center'});
     });
 
-    /* Prevent accidental XSS by disallowing script tags in message (extra layer) */
-    document.getElementById('message').addEventListener('input', (e) => {
+    // sanitize message input (prevent naive script tag attempts)
+    const msgField = document.getElementById('message');
+    msgField.addEventListener('input', (e) => {
       if(/<script/i.test(e.target.value)) e.target.value = e.target.value.replace(/<script/ig, '&lt;script');
     });
-
   </script>
 </body>
 </html>
